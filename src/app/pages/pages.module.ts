@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
+import { SocketService } from '../services/socket.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HomeComponent } from './home/home.component';
   entryComponents: [
   ],
 
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }, SocketService]
 
 })
 export class PagesModule { }

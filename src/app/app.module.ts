@@ -8,12 +8,16 @@ import { SharedModule } from './pages/shared.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    SocketIoModule.forRoot(config),
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
