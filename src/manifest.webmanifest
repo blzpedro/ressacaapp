@@ -1,0 +1,13 @@
+{
+  "name": "Ressaca App",
+  "short_name": "Ressaca App",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "/?utm_source=a2hs",
+  "orientation": "portrait",
+  "description": "Aplicativo para desafios Ressaca App.",
+  "icons": [    
+  ]
+}
