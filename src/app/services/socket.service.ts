@@ -12,11 +12,16 @@ export class SocketService {
 
   getMessages() {
     let observable$ = new Observable((observer) => {
-      this.socket.on('chat message', (message) => {
+      this.socket.on('messageToClient', (message) => {
         observer.next(message);
       });
     });
     return observable$
+  }
+
+  sendMessage(value: string) {
+    console.log(`Sending message ${value}`);
+    this.socket.emit('messageToServer', value);
   }
 
   disconnectRoom() {

@@ -1,1 +1,29 @@
-<h1>Home</h1>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  var form = document.getElementById("form");
+  var input = document.getElementById("input");
+
+  function sendMessage() {
+      console.log(input.value);
+  }
+
+  form.addEventListener("submit", function (e) {
+    if (input.value) {
+      socket.emit("messageToServer", input.value);
+      input.value = "";
+    }
+  });
+</script>
+
+<h1>Chat</h1>
+<ul>
+    <li *ngFor="let message of messages; index as i; trackBy: trackByFn">
+        <p> {{ message }} </p>
+    </li>
+</ul>
+<form id="form">
+    <input id="input" type="text" name="messageInput" #messageInput>
+    <button type="button" (click)="sendMessage(messageInput.value)">Send message</button>
+</form>

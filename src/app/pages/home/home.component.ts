@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -8,11 +8,17 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class HomeComponent implements OnInit {
   constructor(private socket: SocketService) { }
+  messages: [] = [];
+
+  sendMessage(value: string): void {
+    this.socket.sendMessage(value);
+  }
 
   ngOnInit() {
     this.socket.connectRoom()
     this.socket.getMessages().subscribe(message => {
-      console.log(message);
+      console.log(`Message received: ${message}`);
+      this.messages.push(message);
     });
   }
 }
